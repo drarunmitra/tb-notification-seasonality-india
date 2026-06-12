@@ -1,13 +1,62 @@
 ---
 title: "Separating disease seasonality from reporting-calendar effects in tuberculosis notification in India, Ni-kshay 2022-2025"
 author:
-  - name: "Arun Mitra"
-    affiliation: "[affiliation]"
-    email: "dr.arunmitra@gmail.com"
-  - name: "[co-authors]"
+  - name: Arun Mitra
+    orcid: 0000-0001-6742-4033
+    email: dr.arunmitra@gmail.com
+    corresponding: true
+    affiliations:
+      - ref: aiims
+  - name: Durgesh Prasad Sahoo
+    orcid: 0000-0003-3724-0107
+    affiliations:
+      - ref: aiims
+  - name: Neeraj Agarwal
+    affiliations:
+      - ref: aiims
+  - name: Biju Soman
+    orcid: 0000-0003-0748-0839
+    affiliations:
+      - ref: sctimst
+  - name: Adrija Roy
+    orcid: 0000-0002-2351-6259
+    affiliations:
+      - ref: rvm
+  - name: Gurpreet Singh
+    orcid: 0000-0002-1375-3189
+    affiliations:
+      - ref: afmc
+  - name: Frederick Satiro Vaz
+    orcid: 0000-0003-3113-5920
+    affiliations:
+      - ref: gmc
+  - name: Shreyas Patil
+    orcid: 0000-0001-7797-8400
+    affiliations:
+      - ref: indep
+affiliations:
+  - id: aiims
+    name: "Department of Community Medicine and Family Medicine, All India Institute of Medical Sciences (AIIMS), Bibinagar, Hyderabad, India"
+  - id: sctimst
+    name: "Sree Chitra Tirunal Institute for Medical Sciences and Technology (SCTIMST), Trivandrum, India"
+  - id: rvm
+    name: "RVM Institute of Medical Sciences and Research, Siddipet, Telangana, India"
+  - id: afmc
+    name: "Department of Community Medicine, Armed Forces Medical College, Pune, India"
+  - id: gmc
+    name: "Goa Medical College, Panaji, Goa, India"
+  - id: indep
+    name: "Independent Researcher, Bengaluru, Karnataka, India"
 date: today
 format:
   docx: default
+  pdf:
+    toc: false
+    number-sections: false
+    geometry: margin=1in
+    fontsize: 11pt
+    linestretch: 1.5
+    colorlinks: true
   html:
     toc: true
     embed-resources: true
@@ -20,7 +69,7 @@ bibliography:
   - references.bib
 ---
 
-> Draft v1 (2026-06-12). Longitudinal ecological analysis of monthly TB notification, January 2022 to 2025, at the district level (747 Local Government Directory districts with an active TB Unit). Reporting follows STROBE. The ethics approval number is to be inserted before submission.
+> Draft v1 (2026-06-12). Longitudinal ecological analysis of monthly TB notification, January 2022 to 2025, at the district level (747 Local Government Directory districts with an active TB Unit). Reporting follows STROBE. The study was granted ethics exemption by the AIIMS Bibinagar Institutional Ethics Committee (AIIMS/BBN/IEC/Feb/2025/657-exmp).
 
 ## Abstract
 
@@ -67,7 +116,7 @@ Objective 2. For each sector we fitted a negative-binomial model (to accommodate
 Objective 3. For each district we computed the month-on-month change in raw notification and in the seasonally and working-day adjusted series, and the share of months whose change reversed sign or whose movement beyond +/-10% did not survive adjustment. We then regressed the per-district share of large increases that did not survive adjustment on district features (public-sector share of notification, latitude, population density, urban share, region, and notification volume) using beta regression, and checked the residuals for spatial autocorrelation (Moran's I on a queen-contiguity graph), refitting a spatial error model if indicated.
 
 ### 2.5 Ethics
-[Institutional Ethics Committee approval number and date to be inserted.] The study used aggregate programmatic data with no individual identifiers.
+The study was granted exemption from review by the Institutional Ethics Committee of the All India Institute of Medical Sciences, Bibinagar (AIIMS/BBN/IEC/Feb/2025/657-exmp), as it used aggregate programmatic data with no individual identifiers.
 
 ## 3. Results
 

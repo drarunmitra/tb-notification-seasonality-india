@@ -5,7 +5,35 @@ authors:
   - family-names: Mitra
     given-names: Arun
     email: dr.arunmitra@gmail.com
-  # additional co-authors to be added
+    orcid: "https://orcid.org/0000-0001-6742-4033"
+    affiliation: "Department of Community Medicine and Family Medicine, AIIMS Bibinagar, Hyderabad, India"
+  - family-names: Sahoo
+    given-names: Durgesh Prasad
+    orcid: "https://orcid.org/0000-0003-3724-0107"
+    affiliation: "Department of Community Medicine and Family Medicine, AIIMS Bibinagar, Hyderabad, India"
+  - family-names: Agarwal
+    given-names: Neeraj
+    affiliation: "Department of Community Medicine and Family Medicine, AIIMS Bibinagar, Hyderabad, India"
+  - family-names: Soman
+    given-names: Biju
+    orcid: "https://orcid.org/0000-0003-0748-0839"
+    affiliation: "Sree Chitra Tirunal Institute for Medical Sciences and Technology (SCTIMST), Trivandrum, India"
+  - family-names: Roy
+    given-names: Adrija
+    orcid: "https://orcid.org/0000-0002-2351-6259"
+    affiliation: "RVM Institute of Medical Sciences and Research, Siddipet, Telangana, India"
+  - family-names: Singh
+    given-names: Gurpreet
+    orcid: "https://orcid.org/0000-0002-1375-3189"
+    affiliation: "Department of Community Medicine, Armed Forces Medical College, Pune, India"
+  - family-names: Vaz
+    given-names: Frederick Satiro
+    orcid: "https://orcid.org/0000-0003-3113-5920"
+    affiliation: "Goa Medical College, Panaji, Goa, India"
+  - family-names: Patil
+    given-names: Shreyas
+    orcid: "https://orcid.org/0000-0001-7797-8400"
+    affiliation: "Independent Researcher, Bengaluru, Karnataka, India"
 version: 1.0.0
 date-released: 2026-06-12
 url: "https://github.com/drarunmitra/tb-notification-seasonality-india"
@@ -26,6 +54,19 @@ preferred-citation:
   authors:
     - family-names: Mitra
       given-names: Arun
-      email: dr.arunmitra@gmail.com
+    - family-names: Sahoo
+      given-names: Durgesh Prasad
+    - family-names: Agarwal
+      given-names: Neeraj
+    - family-names: Soman
+      given-names: Biju
+    - family-names: Roy
+      given-names: Adrija
+    - family-names: Singh
+      given-names: Gurpreet
+    - family-names: Vaz
+      given-names: Frederick Satiro
+    - family-names: Patil
+      given-names: Shreyas
   year: 2026
   notes: "Article under review; journal DOI to follow on publication."

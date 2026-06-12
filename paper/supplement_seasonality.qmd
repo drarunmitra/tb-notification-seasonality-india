@@ -1,10 +1,52 @@
 ---
 title: "Supplementary material — Separating disease seasonality from reporting-calendar effects in tuberculosis notification in India, Ni-kshay 2022–2025"
 author:
-  - name: "Arun Mitra"
-    affiliation: "[affiliation]"
-    email: "dr.arunmitra@gmail.com"
-  - name: "[co-authors]"
+  - name: Arun Mitra
+    orcid: 0000-0001-6742-4033
+    email: dr.arunmitra@gmail.com
+    corresponding: true
+    affiliations:
+      - ref: aiims
+  - name: Durgesh Prasad Sahoo
+    orcid: 0000-0003-3724-0107
+    affiliations:
+      - ref: aiims
+  - name: Neeraj Agarwal
+    affiliations:
+      - ref: aiims
+  - name: Biju Soman
+    orcid: 0000-0003-0748-0839
+    affiliations:
+      - ref: sctimst
+  - name: Adrija Roy
+    orcid: 0000-0002-2351-6259
+    affiliations:
+      - ref: rvm
+  - name: Gurpreet Singh
+    orcid: 0000-0002-1375-3189
+    affiliations:
+      - ref: afmc
+  - name: Frederick Satiro Vaz
+    orcid: 0000-0003-3113-5920
+    affiliations:
+      - ref: gmc
+  - name: Shreyas Patil
+    orcid: 0000-0001-7797-8400
+    affiliations:
+      - ref: indep
+affiliations:
+  - id: aiims
+    name: "Department of Community Medicine and Family Medicine, All India Institute of Medical Sciences (AIIMS), Bibinagar, Hyderabad, India"
+  - id: sctimst
+    name: "Sree Chitra Tirunal Institute for Medical Sciences and Technology (SCTIMST), Trivandrum, India"
+  - id: rvm
+    name: "RVM Institute of Medical Sciences and Research, Siddipet, Telangana, India"
+  - id: afmc
+    name: "Department of Community Medicine, Armed Forces Medical College, Pune, India"
+  - id: gmc
+    name: "Goa Medical College, Panaji, Goa, India"
+  - id: indep
+    name: "Independent Researcher, Bengaluru, Karnataka, India"
 date: today
 format:
   docx: default

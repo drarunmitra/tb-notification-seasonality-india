@@ -7,6 +7,8 @@
 # rendered manuscript outputs (source .qmd is tracked; render locally)
 paper/*.html
 paper/*.docx
+paper/*.pdf
+paper/*.tex
 paper/*_files/
 paper/.quarto/
 
