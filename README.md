@@ -2,7 +2,7 @@
 
 Data and analysis code for the paper:
 
-> **Disease or calendar? Seasonality of tuberculosis notification in India and a public-sector reporting artefact, Ni-kshay 2022–2025.**
+> **Separating disease seasonality from reporting-calendar effects in tuberculosis notification in India, Ni-kshay 2022–2025.**
 > Arun Mitra et al. (under review).
 
 A longitudinal ecological analysis of monthly TB notification at the district level (747 Local
@@ -125,8 +125,8 @@ If you use this code or the district-level data, please cite the paper (citation
 be added on publication).
 
 ```
-Mitra A, et al. Disease or calendar? Seasonality of tuberculosis notification in India and a
-public-sector reporting artefact, Ni-kshay 2022–2025. [Journal], [Year]. DOI: [to be added]
+Mitra A, et al. Separating disease seasonality from reporting-calendar effects in tuberculosis
+notification in India, Ni-kshay 2022–2025. [Journal], [Year]. DOI: [to be added]
 ```
 
 ## License
