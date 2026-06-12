@@ -158,7 +158,7 @@ if (!is.null(o3)) {
 
 ## Data and code availability
 
-The analysis used TB notification counts reported through the NTEP Ni-kshay system and aggregated to the TB Unit level; these programmatic data are governed by the National TB Elimination Programme and are not publicly redistributable at facility level. District-level aggregates underlying the figures are provided in the Supplementary material. Climate (NASA POWER), population (WorldPop), and settlement layers are publicly available from the cited sources. The full analysis code (R) and the district-level data are available at https://github.com/drarunmitra/tb-notification-seasonality-india and archived on Zenodo (DOI: [Zenodo DOI to be added on release]).
+The analysis used TB notification counts reported through the NTEP Ni-kshay system and aggregated to the TB Unit level; these programmatic data are governed by the National TB Elimination Programme and are not publicly redistributable at facility level. District-level aggregates underlying the figures are provided in the Supplementary material. Climate (NASA POWER), population (WorldPop), and settlement layers are publicly available from the cited sources. The full analysis code (R) and the district-level data are available at https://github.com/drarunmitra/tb-notification-seasonality-india and archived on Zenodo (DOI: 10.5281/zenodo.20665380).
 
 ## References {.unnumbered}
 

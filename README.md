@@ -1,5 +1,7 @@
 # Seasonality of tuberculosis notification in India: disease signal versus public-sector reporting artefact
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20665380.svg)](https://doi.org/10.5281/zenodo.20665380)
+
 Data and analysis code for the paper:
 
 > **Separating disease seasonality from reporting-calendar effects in tuberculosis notification in India, Ni-kshay 2022–2025.**
@@ -121,12 +123,15 @@ Committee approval number and date: *to be inserted*.
 
 ## Citation
 
-If you use this code or the district-level data, please cite the paper (citation and archived DOI to
-be added on publication).
+If you use this code or the district-level data, please cite both the paper and the archived
+code/data (Zenodo DOI below).
 
 ```
 Mitra A, et al. Separating disease seasonality from reporting-calendar effects in tuberculosis
-notification in India, Ni-kshay 2022–2025. [Journal], [Year]. DOI: [to be added]
+notification in India, Ni-kshay 2022–2025. [Journal], [Year].
+
+Code and data archive: Mitra A. (2026). TB notification seasonality in India: analysis code and
+district-level data (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.20665380
 ```
 
 ## License

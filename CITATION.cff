@@ -11,7 +11,7 @@ date-released: 2026-06-12
 url: "https://github.com/drarunmitra/tb-notification-seasonality-india"
 repository-code: "https://github.com/drarunmitra/tb-notification-seasonality-india"
 license: MIT
-# doi: <Zenodo concept DOI to be added on first release>
+doi: "10.5281/zenodo.20665380"
 keywords:
   - tuberculosis
   - case notification
@@ -28,4 +28,4 @@ preferred-citation:
       given-names: Arun
       email: dr.arunmitra@gmail.com
   year: 2026
-  notes: "Under review. Zenodo DOI to be added on release."
+  notes: "Article under review; journal DOI to follow on publication."
