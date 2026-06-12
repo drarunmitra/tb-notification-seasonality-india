@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software or the district-level data, please cite both this repository (below) and the associated paper (preferred-citation)."
+title: "TB notification seasonality in India: analysis code and district-level data"
+authors:
+  - family-names: Mitra
+    given-names: Arun
+    email: dr.arunmitra@gmail.com
+  # additional co-authors to be added
+version: 1.0.0
+date-released: 2026-06-12
+url: "https://github.com/drarunmitra/tb-notification-seasonality-india"
+repository-code: "https://github.com/drarunmitra/tb-notification-seasonality-india"
+license: MIT
+# doi: <Zenodo concept DOI to be added on first release>
+keywords:
+  - tuberculosis
+  - case notification
+  - seasonality
+  - surveillance
+  - reporting bias
+  - public-private sector
+  - India
+preferred-citation:
+  type: article
+  title: "Disease or calendar? Seasonality of tuberculosis notification in India and a public-sector reporting artefact, Ni-kshay 2022-2025"
+  authors:
+    - family-names: Mitra
+      given-names: Arun
+      email: dr.arunmitra@gmail.com
+  year: 2026
+  notes: "Under review. Zenodo DOI to be added on release."
