@@ -1,0 +1,13 @@
+Sector,Term,Block,Rate ratio,95% CI,p
+Public,Fiscal quarter-end,Reporting calendar / campaign,1.029,1.024-1.035,4.4000000000000005e-27
+Public,Fiscal year-end (March),Reporting calendar / campaign,0.969,0.958-0.980,5.1e-8
+Public,100-day campaign,Reporting calendar / campaign,1.082,1.070-1.095,3.2e-42
+Public,Temperature (lag 3m),Climate,0.989,0.988-0.990,3.899999999999999e-77
+Public,Solar radiation (lag 3m),Climate,0.997,0.995-0.998,3.4e-7
+Public,Relative humidity,Climate,1,1.000-1.001,3.9e-5
+Private,Fiscal quarter-end,Reporting calendar / campaign,1.016,1.005-1.026,0.0041
+Private,Fiscal year-end (March),Reporting calendar / campaign,0.994,0.971-1.017,0.61
+Private,100-day campaign,Reporting calendar / campaign,0.981,0.958-1.003,0.092
+Private,Temperature (lag 3m),Climate,0.99,0.988-0.992,9.6e-17
+Private,Solar radiation (lag 3m),Climate,0.997,0.995-1.000,0.06
+Private,Relative humidity,Climate,1.001,1.000-1.001,0.0072

@@ -1,0 +1,196 @@
+---
+title: "Supplementary material — Disease or calendar? Seasonality of tuberculosis notification in India and a public-sector reporting artefact, Ni-kshay 2022–2025"
+author:
+  - name: "Arun Mitra"
+    affiliation: "[affiliation]"
+    email: "dr.arunmitra@gmail.com"
+  - name: "[co-authors]"
+date: today
+format:
+  docx: default
+  html:
+    toc: true
+    embed-resources: true
+execute:
+  echo: false
+  warning: false
+  message: false
+bibliography:
+  - references_p2_seasonality.bib
+  - references.bib
+---
+
+```{r setup}
+library(readr); library(dplyr); library(tidyr); library(knitr); library(stringr)
+out <- "../out"
+der <- "../files"
+rd  <- function(path) tryCatch(read_csv(path, show_col_types = FALSE), error = function(e) NULL)
+fp  <- function(p) ifelse(is.na(p), NA_character_,
+                          ifelse(p < 0.001, "<0.001", formatC(p, format = "fg", digits = 2)))
+o2coef <- rd(file.path(out, "o2_coefficients.csv"))
+part   <- rd(file.path(out, "o2_partition.csv"))
+sens   <- rd(file.path(out, "sensitivity.csv"))
+het    <- rd(file.path(out, "o3_heterogeneity.csv"))
+hetadj <- rd(file.path(out, "o3_heterogeneity_adjusted.csv"))
+remap  <- rd(file.path(der, "parent_remap.csv"))
+o1     <- rd(file.path(out, "o1_seasonal_national.csv"))
+```
+
+This document supplements the main text. Section S1 gives the full methods; Section S2 gives the supplementary tables referenced in the main text; Section S3 gives supplementary figures. All quantities are reproduced from the analysis outputs in the accompanying code repository and are not recomputed here.
+
+## S1. Supplementary methods
+
+### S1.1 District analysis frame
+The analysis unit is the Local Government Directory (LGD) district. The 7,028 active TB Units (after excluding 60 inactive, non-functional, or closed units, as in the companion cross-sectional paper) were attributed to the district of their registering office and aggregated to district-month counts of public, private, and total notification. Eighteen districts created between 2012 and 2022 were folded into their pre-split parent districts, because their TB Units and notifications are recorded under the parent in the current directory vintage (Table S1). Two Pakistan-administered districts claimed by India (Muzaffarabad and Mirpur, `dist_lgd = 0`) lie outside the programme and were excluded. The resulting frame comprises the 747 districts with at least one active TB Unit. District denominators were annual WorldPop population.
+
+### S1.2 Reporting-lag handling
+Recent months under-count because notifications are entered with delay. Each month's national total was compared with the median of the preceding 12 months; trailing months below 85% of that median were flagged as incomplete and dropped. This removed only the final month. The core seasonality and regression models were restricted to complete calendar months through 2025, matching climate-covariate coverage.
+
+### S1.3 Climate covariates
+Monthly mean and minimum temperature, relative humidity, precipitation, and surface solar radiation were obtained per district from NASA POWER (no authentication required; 2022–2025), and entered at epidemiologically plausible lags. The lag was selected by AICc, comparing lags of 0 to 3 months within each sector; a 3-month lag minimised AICc in both the public and private models (Table S3). Solar radiation was missing for December 2025 at the time of extraction and is carried as such.
+
+### S1.4 Reporting-calendar and campaign covariates
+Working days per month were computed as weekdays minus national gazetted holidays, and entered as part of the model offset (log population + log working days). A fiscal quarter-end indicator marked March, June, September, and December; a separate fiscal year-end indicator marked March. A campaign indicator marked the months of the national 100-day intensified case-finding campaign (December 2024 to March 2025) [@centraltbdivisionmohfwgovernmentofindia2024ctdmohafw]. Active case-finding in India is a discrete, public-sector activity whose yield is measured against public-sector notification [@shewade2023gha], which motivates the public-versus-private contrast as the discriminating test.
+
+### S1.5 Seasonal-trend decomposition (Objective 1)
+National and sector-specific monthly series were decomposed by seasonal-trend decomposition by loess (STL) on the log scale with a finite seasonal window, yielding a multiplicative seasonal factor. We summarised the peak and trough month, the seasonal amplitude (peak-to-trough difference as a percentage of trend level), and the seasonal strength. Confidence intervals were obtained by a moving-block bootstrap (block length 12 months, 2,000 resamples).
+
+### S1.6 Sector-specific models (Objective 2)
+For each sector we fitted a negative-binomial model (`glmmTMB`) of monthly district counts, with an offset of log population plus log working days, second-order Fourier seasonal terms, the lag-selected climate covariates, the reporting-calendar and campaign terms, a year term and a smooth post-pandemic trend, and a district random intercept. Overdispersion was confirmed in both sectors (likelihood-ratio test against Poisson; DHARMa dispersion). Residual temporal autocorrelation was assessed by the Ljung-Box test on year-month-averaged residuals (lag 12). The public-sector residuals were white (p = 0.13); the private-sector residuals were autocorrelated (p = 0.004), so the private model was refitted with an `ar1(month | district)` structure, which was preferred by AICc (Table S3). The discriminating test compares the reporting-calendar and campaign coefficients between sectors (Table S2). This identifies a reporting artefact under the assumption that private providers are not subject to the public sector's fiscal-year targets or campaign mobilisation; any residual private-sector calendar response biases the contrast toward the null.
+
+### S1.7 Variance partition (Objective 2)
+The modelled seasonal signal was partitioned into harmonic, climate, and calendar-campaign blocks, each block's contribution expressed as a proportionate share of the seasonal variance, with a district cluster bootstrap (2,000 resamples; Table S4). Because the harmonic and climate terms both encode the smooth annual cycle they are collinear, and their individual division is not interpreted; the interpretable quantity is the calendar-campaign share, which is public-specific.
+
+### S1.8 Monitoring consequence and heterogeneity (Objective 3)
+For each district we computed the month-on-month change in raw notification and in the seasonally and working-day adjusted series, and the share of months whose change reversed sign and whose movement beyond ±10% did not survive adjustment. The per-district share of large increases that did not survive adjustment was regressed on district features (public-sector share of notification, latitude, log population density, urban share, region, log notification volume) by beta regression (Table S7). Residuals were checked for spatial autocorrelation by Moran's I on a queen-contiguity graph. As a robustness check the model was refitted adding district literacy and Scheduled-Caste/Scheduled-Tribe share from the 2011 Census, in the 611 districts with a Census-2011 match (Table S6).
+
+## S2. Supplementary tables
+
+```{r}
+#| label: tbl-s1
+#| tbl-cap: "Table S1. Newly-created districts (2012–2022) folded into pre-split parent districts for the analysis frame."
+if (!is.null(remap)) {
+  remap |>
+    transmute(`Child district` = str_to_title(child_dtname),
+              State = str_to_title(stname),
+              `Folded into (parent)` = str_to_title(parent_dtname),
+              Note = ifelse(is.na(note), "", note)) |>
+    arrange(State, `Child district`) |>
+    kable()
+}
+```
+
+```{r}
+#| label: tbl-s2
+#| tbl-cap: "Table S2. Full sector-specific rate ratios for the reporting-calendar/campaign and climate covariates (negative-binomial models with population and working-day offsets; private sector with an AR(1) term)."
+if (!is.null(o2coef)) o2coef |> mutate(p = fp(p)) |> kable()
+```
+
+```{r}
+#| label: tbl-s3
+#| tbl-cap: "Table S3. Model diagnostics and specification choices, by sector."
+diag <- tibble::tribble(
+  ~Quantity,                                   ~Public,            ~Private,
+  "Climate lag selected (AICc)",               "3 months",         "3 months",
+  "AICc, lag 0 / lag 3",                        "394548 / 369737",  "345403 / 323345",
+  "Dispersion theta (negative binomial)",      "43.40",            "10.73",
+  "Overdispersion LRT vs Poisson",             "p < 0.001",        "p < 0.001",
+  "DHARMa dispersion test (p)",                "0.224",            "< 0.001",
+  "Ljung-Box on residuals, lag 12 (p)",        "0.131 (white)",    "0.004 (autocorrelated)",
+  "AR(1) term",                                "not needed",       "added; AICc 257266 → 257254, preferred"
+)
+kable(diag)
+```
+
+```{r}
+#| label: tbl-s4
+#| tbl-cap: "Table S4. Partition of the modelled seasonal variance into blocks, by sector, with 95% cluster-bootstrap confidence intervals (%). The calendar-campaign share is the interpretable, public-specific quantity; the harmonic and climate blocks jointly carry the collinear smooth annual cycle."
+if (!is.null(part)) {
+  part |>
+    transmute(Sector = str_to_title(sector),
+              Block = recode(block, harmonic = "Harmonic (Fourier)", climate = "Climate",
+                             calendar = "Calendar / campaign"),
+              `Share %` = round(share_pct, 1),
+              `95% CI` = sprintf("%.1f to %.1f", share_lo, share_hi)) |>
+    kable()
+}
+```
+
+```{r}
+#| label: tbl-s5
+#| tbl-cap: "Table S5. Sensitivity of the headline results to analytical choices. (A) STL specification; (B) climate lag; (C) working days as offset vs covariate; (D) STL vs simple seasonal-index adjustment for the monitoring payoff."
+if (!is.null(sens)) {
+  lab <- c(A_STL_spec = "A. STL specification",
+           B_climate_lag = "B. Climate lag",
+           C_wd_offset = "C. Working-day handling",
+           D_payoff = "D. Payoff adjustment method")
+  sens |>
+    transmute(Analysis = lab[analysis], Variant = variant, Quantity = quantity,
+              Value = ifelse(grepl("pval", quantity),
+                             ifelse(value < 0.001, "<0.001", formatC(value, format = "fg", digits = 2)),
+                             formatC(value, format = "g", digits = 4))) |>
+    kable()
+}
+```
+
+```{r}
+#| label: tbl-s6
+#| tbl-cap: "Table S6. Heterogeneity model with and without adjustment for 2011 Census district socio-demography (literacy, Scheduled-Caste/Scheduled-Tribe share), in the 611 districts with a Census-2011 match. Outcome: per-district share of large month-on-month increases not surviving seasonal and working-day adjustment (beta regression, logit scale). The public-sector-share association is unchanged after adjustment."
+if (!is.null(hetadj)) {
+  keep <- c("public_share","literacy_sc","scst_sc","lognotif_sc","lat_sc","pct_urban_notif")
+  nice <- c(public_share = "Public-sector share", literacy_sc = "Literacy (Census 2011, z)",
+            scst_sc = "SC/ST share (Census 2011, z)", lognotif_sc = "Log notification volume (z)",
+            lat_sc = "Latitude (z)", pct_urban_notif = "Urban share of notification")
+  mk <- function(m, lab) hetadj |>
+    filter(model == m, term %in% keep) |>
+    transmute(Term = nice[term],
+              !!paste0(lab, ": Estimate") := round(estimate, 3),
+              !!paste0(lab, ": 95% CI")   := sprintf("%.3f to %.3f", ci_lo, ci_hi),
+              !!paste0(lab, ": p")        := fp(p))
+  full_join(mk("surge_unadjusted_restricted", "Unadjusted"),
+            mk("surge_adjusted_sociodem", "Adjusted"), by = "Term") |>
+    arrange(match(Term, nice[keep])) |>
+    kable()
+}
+```
+
+```{r}
+#| label: tbl-s7
+#| tbl-cap: "Table S7. Full heterogeneity models (primary, all 747-district sample), for both monitoring outcomes: the share of large increases not surviving adjustment (surge artefact) and the overall sign-reversal rate. Beta regression, logit scale. The public-sector-share association is specific to large increases."
+if (!is.null(het)) {
+  nice <- c(`(Intercept)` = "(Intercept)", public_share = "Public-sector share",
+            lat_sc = "Latitude (z)", logdens_sc = "Log population density (z)",
+            pct_urban_notif = "Urban share of notification", lognotif_sc = "Log notification volume (z)",
+            regionEast = "Region: East", regionNorth = "Region: North",
+            regionNortheast = "Region: Northeast", regionOther = "Region: Other",
+            regionSouth = "Region: South", regionWest = "Region: West")
+  het |>
+    filter(model %in% c("surge_artefact_betareg","sign_flip_betareg")) |>
+    transmute(Term = nice[term],
+              Outcome = recode(model, surge_artefact_betareg = "Surge artefact",
+                               sign_flip_betareg = "Sign reversal"),
+              Estimate = round(estimate, 3),
+              `95% CI` = sprintf("%.3f to %.3f", ci_lo, ci_hi),
+              p = fp(p)) |>
+    kable()
+}
+```
+
+## S3. Supplementary figures
+
+::: {#fig-s1}
+![](../out/o3_heterogeneity.png){width=90%}
+
+Figure S1. District features associated with the share of large monthly increases that do not survive seasonal and working-day adjustment (beta regression), with the partial effect of public-sector share. Full-resolution version of the main-text panel.
+:::
+
+::: {#fig-s2}
+![](../out/o2_partition.png){width=80%}
+
+Figure S2. Reporting-calendar and campaign share of the modelled seasonal variance, by sector, with 95% cluster-bootstrap confidence intervals (full-resolution). The share is public-specific.
+:::
+
+## References {.unnumbered}
+
+::: {#refs}
+:::

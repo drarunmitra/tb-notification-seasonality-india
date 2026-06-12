@@ -1,0 +1,19 @@
+child_dist_lgd,child_dtname,stname,parent_dist_lgd,parent_dtname,note
+737,Malerkotla,punjab,43,Sangrur,
+714,Noney,manipur,258,Tamenglong,
+715,Pherzawl,manipur,254,Churachandpur,
+717,Kamjong,manipur,260,Ukhrul,
+677,Kra Daadi,arunachal pradesh,233,Kurung Kumey,
+725,Shi Yomi,arunachal pradesh,243,West Siang,
+723,Pakke Kessang,arunachal pradesh,231,East Kameng,
+679,Siang,arunachal pradesh,243,West Siang,split from West+East Siang; folded to West Siang
+719,Lower Siang,arunachal pradesh,243,West Siang,split from West+East Siang; folded to West Siang
+718,Kamle,arunachal pradesh,236,Lower Subansiri,split from Lower+Upper Subansiri; folded to Lower Subansiri
+728,Khawzawl,mizoram,262,Champhai,
+727,Saitual,mizoram,261,Aizawl,split from Aizawl+Champhai; folded to Aizawl
+736,Noklak,nagaland,249,Tuensang,
+765,Shamator,nagaland,249,Tuensang,
+764,Niuland,nagaland,244,Dimapur,
+757,Tseminyu,nagaland,245,Kohima,
+657,East Jaintia Hills,meghalaya,275,West Jaintia Hills,parent 'Jaintia Hills' now split; folded to West Jaintia Hills
+658,South West Khasi Hills,meghalaya,279,West Khasi Hills,

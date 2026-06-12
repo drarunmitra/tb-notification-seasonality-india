@@ -1,0 +1,45 @@
+O2 Diagnostics - generated: 2026-06-12 10:27:19.900084
+Script: 21_fit_sector_models.R
+Seed: 1
+
+Climate lag selection:
+  Public  sector: lag = 3 | AICc table:
+    lag0: 394548.05
+    lag1: 386537.97
+    lag2: 378342.02
+    lag3: 369737.45
+  Private sector: lag = 3 | AICc table:
+    lag0: 345403.28
+    lag1: 338122.38
+    lag2: 330872.38
+    lag3: 323345.24
+
+
+===== PUBLIC SECTOR =====
+
+Convergence: pdHess=TRUE | optim_convergence=TRUE
+
+Overdispersion: theta=43.398 | LRT chi2=74226.65, p=0.0000 (overdispersion confirmed=TRUE)
+
+DHARMa dispersion: statistic=0.989, p=0.2240
+
+Ljung-Box (lag=12, n_ym=44) on year-month-avg residuals: chi2=17.534, p=0.1306 => white
+
+
+===== PRIVATE SECTOR =====
+
+Convergence: pdHess=TRUE | optim_convergence=TRUE
+
+Overdispersion: theta=10.732 | LRT chi2=154760.04, p=0.0000 (overdispersion confirmed=TRUE)
+
+DHARMa dispersion: statistic=0.928, p=0.0000
+
+Ljung-Box (lag=12, n_ym=44) on year-month-avg residuals: chi2=28.913, p=0.0041 => SIGNIFICANT
+
+TEMPORAL AUTOCORRELATION DETECTED. Escalation path:
+  (1) Add ar1(month_num + 0 | dist_lgd) correlation structure in glmmTMB.
+  (2) Alternatively, move to tscount::tsglm (INGARCH) or glmmTMB with AR1.
+  Attempting ar1 variant...
+
+ar1 variant fitted. AICc: base=257266.44, ar1=257254.47, delta=11.97 => ar1 preferred
+
